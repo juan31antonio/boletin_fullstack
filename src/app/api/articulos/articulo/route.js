@@ -11,7 +11,7 @@ export async function GET(request) {
     const idBuscado = searchParams.get("id")
 
     const { data: articulo, error } = await supabase.from("articulos").select("*").eq("id", idBuscado).single();
-
+    
     if(articulo) {
         return new Response(JSON.stringify(articulo), {status:200})
     }
