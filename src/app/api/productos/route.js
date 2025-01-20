@@ -5,7 +5,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 export async function GET(){
-    const {data: productos, error} = await supabase.from("productos").select("id, nombre, precio, stock")
+    const {data: productos, error} = await supabase.from("productos").select("id, nombre,descripcion, precio, stock")
 
     if(error){
         return new Response(
