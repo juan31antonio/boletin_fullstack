@@ -58,7 +58,7 @@ export default function Users({ params }) {
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Descripción</th>
+            <th>Descripcion</th>
             <th>Precio</th>
             <th>Stock</th>
           </tr>
