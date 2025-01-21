@@ -80,7 +80,7 @@ export default function AddProduct({ params }) {
         <button type="submit">Agregar</button>
       </form>
       <p>
-        <Link href={"/productos"}>
+        <Link href={"/Ejercicio-2/productos"}>
           <button>Volver Atrás</button>
         </Link>
       </p>

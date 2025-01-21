@@ -19,6 +19,9 @@ export default function Users({ params }) {
   }, []);
 
   function editarStock(id, newStock) {
+    if(newStock < 0){
+      newStock = 0
+    }
     setProductos((prevProductos) =>
       prevProductos.map((producto) =>
         producto.id === id ? { ...producto, stock: parseInt(newStock, 10) } : producto
@@ -51,7 +54,7 @@ export default function Users({ params }) {
 
   return (
     <div>
-      <table>
+      <table border={"1"}>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -67,7 +70,7 @@ export default function Users({ params }) {
               <td>{producto.descripcion}</td>
               <td>{producto.precio}</td>
               <td>
-                {isEditing === producto.id ? (
+                 {isEditing === producto.id ? (
                   <input
                     type="number"
                     value={producto.stock}
@@ -76,7 +79,7 @@ export default function Users({ params }) {
                     }
                   />
                 ) : (
-                  producto.stock
+                  producto.stock == 0 ? (<span style={{color: "red"}}>{producto.stock}</span>):(producto.stock)
                 )}
               </td>
               <td>
@@ -88,6 +91,11 @@ export default function Users({ params }) {
           ))}
         </tbody>
       </table>
+      <p>
+        <Link href={"/Ejercicio-2/addProductos"}>
+          <button>Agregar Producto</button>
+        </Link>
+      </p>
     </div>
   );
 }
