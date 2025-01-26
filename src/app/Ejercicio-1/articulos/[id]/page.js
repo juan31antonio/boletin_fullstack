@@ -32,7 +32,7 @@ export default function Articulo({params}) {
         <p><strong>Contenido: {articulo.contenido}</strong></p>
         <p><strong>Autor: {articulo.autor}</strong></p>
         <p><strong>Fecha de Publicacion: {articulo.fecha_publicacion}</strong></p>
-        <Link href={"/articulos"}><h3>Volver Atras</h3></Link>
+        <Link href={"articulos"}><h3>Volver Atras</h3></Link>
       </div>  
     )
 }

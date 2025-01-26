@@ -51,7 +51,7 @@ export async function POST(request){
         }
 
         return new Response(
-            JSON.stringify({message: "Producto añadido correctamente"}),
+            JSON.stringify({message: "Producto agregado correctamente"}),
             { headers: { "Content-Type": "application/json" },
                 status:200 }
         );

@@ -49,7 +49,7 @@ export default function AddArticulo() {
           </form>
           {JSON.stringify(articulo)}
           <p>
-          <Link href={"/articulos"}><button>Volver Atras</button></Link>
+          <Link href={"articulos"}><button>Volver Atras</button></Link>
           </p>
         </div>
     )

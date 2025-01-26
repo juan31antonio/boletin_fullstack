@@ -47,13 +47,13 @@ export default function Articulos({params}) {
             <ul>
                 {articulos.map((articulo) => (
                 <li key={articulo.id}>
-                    <Link href={"/articulos/"+ articulo.id}>{articulo.titulo}</Link><br/>
+                    <Link href={"articulos/"+ articulo.id}>{articulo.titulo}</Link><br/>
                     <button onClick={e => deleteArticulo(articulo.id)}>Eliminar Articulo</button>
                 </li>
                 ))}
             </ul>
         }
-        <Link href={"/addArticulo"}><h3>Add New Articulo</h3></Link>
+        <Link href={"addArticulo"}><h3>Add New Articulo</h3></Link>
       </div>  
     )
 }
