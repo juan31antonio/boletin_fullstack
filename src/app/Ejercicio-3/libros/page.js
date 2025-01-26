@@ -5,9 +5,15 @@ import Link from "next/link";
 
 export default function Users({ params }) {
   const [libros, setLibros] = useState([]);
+  const [filter, setFilter] = useState("todos");
 
   async function fetchLibros() {
-    const url = "/api/libros";
+    let url = "/api/libros";
+    if (filter === "leidos") {
+      url += "?filter=leido";
+    } else if (filter === "no-leidos") {
+      url += "?filter=no-leido";
+    }
     const response = await fetch(url);
     const books = await response.json();
     setLibros(books);
@@ -15,17 +21,17 @@ export default function Users({ params }) {
 
   useEffect(() => {
     fetchLibros();
-  }, []);
+  }, [filter]);
 
 
   async function updateLibro(id) {
-    setLibros((prevLibros) =>
-        prevLibros.map((libro) =>
-          libro.id === id ? { ...libro, leido: !libro.leido } : libro
-        )
+    const updatedLibros = libros.map((libro) =>
+      libro.id === id ? { ...libro, leido: !libro.leido } : libro
     );
-    const libro = libros.find((libro) => libro.id === id);
-    const response = await fetch("/api/libros?id="+id, {
+    setLibros(updatedLibros);
+
+    const libro = updatedLibros.find((libro) => libro.id === id);
+    const response = await fetch("/api/libros?id=" + id, {
       method: "PUT",
       headers: { "Content-Type": "application-json" },
       body: JSON.stringify(libro),
@@ -49,6 +55,11 @@ export default function Users({ params }) {
 
   return (
     <div>
+        <div>
+          <button onClick={() => setFilter("todos")}>Todos</button>
+          <button onClick={() => setFilter("leidos")}>Leidos</button>
+          <button onClick={() => setFilter("no-leidos")}>No leidos</button>
+        </div>
         {
             <ul>
             {libros.map((libro) => (
